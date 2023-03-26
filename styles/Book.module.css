@@ -1,0 +1,23 @@
+.bookWrapper {
+  max-width: 1080px;
+  margin: 4rem auto;
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.bookDetails > div {
+  margin: 1rem 0rem;
+}
+
+.bookTitle {
+  font-size: 4rem;
+  font-weight: 900;
+}
+
+.bookBoldText {
+  font-weight: 900;
+}
+
+.description {
+}
