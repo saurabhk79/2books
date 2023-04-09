@@ -1,5 +1,4 @@
 import Head from "next/head";
-import Link from "next/link";
 
 import React, { useState } from "react";
 import { ClipLoader } from "react-spinners";
@@ -13,8 +12,7 @@ export default function Home() {
   const [books, setBooks] = useState([]);
   const [randomWd, setRandomWd] = useState("");
 
-  const [loading, setLoading] = useState(true);
-  const key = "AIzaSyBEaOB_V5t09GVGU45QsIgjmFD3CeOSc5A";
+  const [loading, setLoading] = useState(false);
 
   // setting search value randomly
   const getFunBooks = () => {
@@ -28,9 +26,7 @@ export default function Home() {
   const getBooks = async (search) => {
     if (search.length) {
       setLoading(true);
-      const res = await fetch(
-        `https://www.googleapis.com/books/v1/volumes?q=${search}&max_results=18&printType=books&key=${key}`
-      );
+      const res = await fetch(`/api/getBook?book=${search}`);
       const data = await res.json();
       setBooks(data.items);
 
@@ -73,14 +69,11 @@ export default function Home() {
               Fun search
             </button>
           </div>
-          <h3>Showing books on {randomWd.length ? randomWd : "Nothing"}</h3>
         </div>
         <div>
           {loading ? (
             <div className={styles.loader}>
-              {/* {books.length ?  */}
-              <ClipLoader color="#f4a261" />
-              {/* // : null} */}
+              <ClipLoader />
             </div>
           ) : (
             <BookCard books={books} />

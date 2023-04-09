@@ -19,5 +19,8 @@
   font-weight: 900;
 }
 
-.description {
+@media (max-width: 480px) {
+  .bookWrapper {
+    display: block;
+  }
 }

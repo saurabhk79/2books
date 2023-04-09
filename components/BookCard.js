@@ -3,14 +3,13 @@ import styles from "../styles/Home.module.css";
 import Image from "next/image";
 import Link from "next/link";
 
-const BookCard = ({ books, randomWd }) => {
+const BookCard = ({ books }) => {
   return (
     <div className={styles.bookWrapper}>
       {books.map((bk, i) => {
         try {
           const details = bk.volumeInfo;
           const img = details.imageLinks.thumbnail;
-          const title = details.title.slice(0, 30);
 
           return (
             <Link
@@ -26,8 +25,6 @@ const BookCard = ({ books, randomWd }) => {
                 height={250}
                 className={styles.bookImg}
               />
-
-              <div className={styles.bookName}>{title}...</div>
             </Link>
           );
         } catch (err) {

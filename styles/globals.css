@@ -27,3 +27,10 @@ a {
   background-color: #d8d8d8;
   width: 0.5rem;
 }
+
+.loader {
+  display: flex;
+  height: calc(100vh - 4.5rem);
+  align-items: center;
+  justify-content: center;
+}

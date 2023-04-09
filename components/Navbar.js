@@ -13,7 +13,7 @@ const Navbar = () => {
           <Link href="/about">
             <li className={styles.navItem}>About</li>
           </Link>
-          <Link href="/support">
+          <Link href="https://ko-fi.com/sauby79">
             <li className={styles.navItem}>Support Us!</li>
           </Link>
         </ul>

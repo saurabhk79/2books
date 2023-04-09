@@ -1,12 +1,14 @@
 import Image from "next/image";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ClipLoader } from "react-spinners";
 import styles from "../../styles/Book.module.css";
 
-function Post(props) {
-  const [loading, setLoading] = useState(false);
+function Post({ data }) {
+  const [loading, setLoading] = useState(true);
 
-  const info = props.data.volumeInfo;
+  console.log(data);
+  const info = data.volumeInfo;
+
   const {
     title,
     subtitle,
@@ -19,19 +21,21 @@ function Post(props) {
     imageLinks,
     language,
   } = info;
+
   const photo = imageLinks.thumbnail;
 
   useEffect(() => {
-    setLoading(true);
     setTimeout(() => {
       setLoading(false);
-    });
-  }, 3000);
+    }, 1000);
+  }, []);
 
   return (
     <div>
       {loading ? (
-        <ClipLoader color="#f4a261" />
+        <div className="loader">
+          <ClipLoader />
+        </div>
       ) : (
         <div className={styles.bookWrapper}>
           <Image
@@ -50,13 +54,13 @@ function Post(props) {
                 return person;
               })}
             </div>
-            <div className={styles.bookBoldText}>
-              Tags:
-              <br />
-              {categories.map((cat) => {
-                return cat;
-              })}
-            </div>
+            {/* <div className={styles.bookBoldText}>
+          Tags:
+          <br />
+          {categories.map((cat) => {
+            return cat;
+          })}
+        </div> */}
             <div>From:&nbsp;{publisher}</div>
             <div>On:&nbsp;{publishedDate}</div>
             <div
@@ -75,10 +79,9 @@ function Post(props) {
 export default Post;
 
 export async function getServerSideProps(context) {
-  const key = "AIzaSyBEaOB_V5t09GVGU45QsIgjmFD3CeOSc5A";
-  const res =
-    await fetch(`https://www.googleapis.com/books/v1/volumes/${context.params.id}?key=${key}
-`);
+  const res = await fetch(
+    `http://localhost:3000/api/getDetail?id=${context.params.id}`
+  );
   const data = await res.json();
   return {
     props: {
