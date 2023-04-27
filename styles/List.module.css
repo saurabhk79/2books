@@ -1,0 +1,35 @@
+/* Main here */
+.main {
+  max-width: 1080px;
+  margin: auto;
+  margin-top: 5rem;
+  padding-top: 1.5rem;
+}
+
+.searchBar {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  font-size: larger;
+  border-radius: 2rem;
+  outline: none;
+  border: none;
+  background-color: #ebebeb;
+}
+
+.books {
+  margin-top: 2rem;
+}
+
+.bookgrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.8rem;
+  margin-top: 1rem;
+}
+
+.bookCard {
+  background-color: #ebebeb;
+  border-radius: 1rem;
+  height: 15rem;
+  width: 12rem;
+}

@@ -1,0 +1,48 @@
+.bgimg {
+  background: url("../public/2books.jpg");
+  width: 100vw;
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+  position: absolute;
+  z-index: -1;
+  filter: brightness(50%);
+}
+
+.main {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.title {
+  color: white;
+  font-size: 6rem;
+}
+
+.title > span {
+  color: #f4a261;
+}
+
+.subtitle {
+  color: white;
+  font-size: xx-large;
+  margin-bottom: 3rem;
+}
+
+.btns > button {
+  padding: 0.5rem 2rem;
+  border: none;
+  outline: none;
+  font-size: larger;
+  font-weight: 900;
+  margin: 0rem 1rem;
+}
+
+.btns > button:hover {
+  background: #f4a261;
+  color: white;
+  transition: all 0.2s;
+}

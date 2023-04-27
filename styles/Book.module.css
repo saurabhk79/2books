@@ -1,0 +1,49 @@
+.main {
+  max-width: 1080px;
+  margin: auto;
+  margin-top: 5rem;
+  padding-top: 1.5rem;
+}
+
+.bookbox {
+  display: flex;
+}
+
+.bookimg {
+  background-color: #ebebeb;
+  border-radius: 1rem 1rem 0rem 0rem;
+  height: 15rem;
+  width: 12rem;
+}
+
+.like {
+  width: 12rem;
+  background-color: #f3f3f3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 2rem;
+  font-weight: 900;
+}
+
+.like:hover {
+  background-color: #f4a261;
+  transition: all 0.2s;
+}
+
+.bookdetail {
+  margin-left: 4rem;
+  align-self: end;
+}
+
+.bookdetail > h1 {
+  font-size: 3rem;
+}
+
+.summary {
+  margin-top: 2rem;
+}
+
+.summary > b {
+  font-size: 1.2rem;
+}
