@@ -14,8 +14,26 @@ a {
   cursor: pointer;
 }
 
+button {
+  padding: 0.5rem 2rem;
+  border: none;
+  outline: none;
+  font-size: larger;
+  font-weight: 900;
+  margin: 1rem;
+  cursor: pointer;
+
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #f4a261;
+  color: white;
+}
+
 ::selection {
   background-color: #f4a261;
+  color: white;
 }
 
 ::-webkit-scrollbar-thumb {

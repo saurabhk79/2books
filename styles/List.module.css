@@ -1,4 +1,3 @@
-/* Main here */
 .main {
   max-width: 1080px;
   margin: auto;
@@ -20,16 +19,83 @@
   margin-top: 2rem;
 }
 
+.loaderBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 20rem;
+}
+
+.bookHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .bookgrid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 1.8rem;
   margin-top: 1rem;
 }
 
+/* =========================== */
+/* Bookcard */
+/* =========================== */
+
 .bookCard {
   background-color: #ebebeb;
+
   border-radius: 1rem;
-  height: 15rem;
-  width: 12rem;
+  height: 20rem;
+  width: 15rem;
+  margin: auto;
+  padding: 1rem;
+
+  transition: all 0.5s ease-in-out;
+  position: relative;
+  overflow: hidden;
+}
+
+.details {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+
+  background-color: transparent;
+  color: white;
+  right: 0;
+  bottom: -20rem;
+  transition: all 0.5s ease-in-out;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.bookCard:hover .details {
+  bottom: 0;
+  background-color: #f4a261;
+  transform: scale(1.05);
+  padding: 1rem;
+}
+
+@media (max-width: 1150px) {
+  .bookgrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 780px) {
+  .bookgrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 540px) {
+  .bookgrid {
+    grid-template-columns: 1fr;
+  }
 }
