@@ -34,7 +34,7 @@
 
 .bookgrid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 1.8rem;
   margin-top: 1rem;
 }
@@ -47,8 +47,8 @@
   background-color: #ebebeb;
 
   border-radius: 1rem;
-  height: 20rem;
-  width: 15rem;
+  height: 15rem;
+  width: 12rem;
   margin: auto;
   padding: 1rem;
 
@@ -82,20 +82,28 @@
   padding: 1rem;
 }
 
+.noImage {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 @media (max-width: 1150px) {
+  .bookgrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
   .bookgrid {
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
-@media (max-width: 780px) {
+@media (max-width: 640px) {
   .bookgrid {
     grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 540px) {
-  .bookgrid {
-    grid-template-columns: 1fr;
   }
 }

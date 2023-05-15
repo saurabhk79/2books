@@ -14,22 +14,21 @@ const List = () => {
   const handleBookChange = (e) => {
     setSearch(e.target.value);
 
-    // if (search.length >= 2) {
-    //   getBooks(search);
-    // } else {
-    //   setBooks([]);
-    // }
+    if (search.length >= 2) {
+      setBooks([]);
+      getBooks();
+    } else {
+      setBooks([]);
+    }
   };
 
-  const getBooks = async (e) => {
-    e.preventDefault();
+  const getBooks = async () => {
+    setLoading(true);
     try {
-      if (search.length) {
-        const res = await fetch(`/api/getBook?book=${search}`);
-        const data = await res.json();
-        setBooks(data.items);
-        console.log(data);
-      }
+      const res = await fetch(`/api/getBook?book=${search}`);
+      const data = await res.json();
+      setBooks(data.items);
+      console.log(data);
     } catch (err) {
       console.log(err);
     }
@@ -44,17 +43,14 @@ const List = () => {
 
       <main className={styles.main}>
         {/* Search bar here */}
-        <form onSubmit={(e) => getBooks(e)}>
-          <h1>Search</h1>
-          <input
-            type="text"
-            className={styles.searchBar}
-            placeholder="Type to search..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          />
-          <button type="submit">Submit</button>
-        </form>
+        <h1>Search</h1>
+        <input
+          type="text"
+          className={styles.searchBar}
+          placeholder="Type to search..."
+          value={search}
+          onChange={(e) => handleBookChange(e)}
+        />
 
         {/* Books here */}
         <div className={styles.books}>
@@ -64,13 +60,23 @@ const List = () => {
           <hr />
           {loading ? (
             <div className={styles.loaderBox}>
-              <PulseLoader speedMultiplier={0.5} color={"#f4a261"} />
+              {search && search.length > 2 ? (
+                <PulseLoader
+                  speedMultiplier={0.5}
+                  size={20}
+                  color={"#f4a261"}
+                />
+              ) : (
+                <h2>Type to search...</h2>
+              )}
             </div>
           ) : (
             <div className={styles.bookgrid}>
-              {books.map((bk, i) => {
-                return <BookCard key={i} book={bk.volumeInfo} />;
-              })}
+              {books.length > 0
+                ? books.map((bk, i) => {
+                    return <BookCard key={i} book={bk.volumeInfo} />;
+                  })
+                : null}
             </div>
           )}
         </div>
@@ -81,19 +87,25 @@ const List = () => {
 
 // Card of books here
 const BookCard = ({ book }) => {
-  let photo = book.imageLinks.thumbnail;
+  // Check if imageLinks and thumbnail properties exist
+  let photo = book.imageLinks && book.imageLinks.thumbnail;
 
   return (
     <div className={styles.bookCard}>
-      <Image
-        src={photo}
-        alt={book.title}
-        className={styles.bookPhoto}
-        fill={true}
-      />
+      {photo ? (
+        <Image
+          src={photo}
+          alt={book.title}
+          className={styles.bookPhoto}
+          fill={true}
+          sizes={20}
+        />
+      ) : (
+        <div className={styles.noImage}>No Image Available</div>
+      )}
       <div className={styles.details}>
         <h4>{book.title}</h4>
-        <p>{book.subtitle}</p>
+        {/* <p>{book.subtitle}</p> */}
       </div>
     </div>
   );
