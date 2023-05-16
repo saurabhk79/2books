@@ -74,7 +74,7 @@ const List = () => {
             <div className={styles.bookgrid}>
               {books.length > 0
                 ? books.map((bk, i) => {
-                    return <BookCard key={i} book={bk.volumeInfo} />;
+                    return <BookCard key={i} bk={bk} />;
                   })
                 : null}
             </div>
@@ -86,12 +86,13 @@ const List = () => {
 };
 
 // Card of books here
-const BookCard = ({ book }) => {
+const BookCard = ({ bk }) => {
   // Check if imageLinks and thumbnail properties exist
+  let book = bk.volumeInfo;
   let photo = book.imageLinks && book.imageLinks.thumbnail;
 
   return (
-    <div className={styles.bookCard}>
+    <Link href={`/book/[id]`} as={`/book/${bk.id}`} className={styles.bookCard}>
       {photo ? (
         <Image
           src={photo}
@@ -107,7 +108,7 @@ const BookCard = ({ book }) => {
         <h4>{book.title}</h4>
         {/* <p>{book.subtitle}</p> */}
       </div>
-    </div>
+    </Link>
   );
 };
 

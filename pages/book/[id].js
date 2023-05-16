@@ -34,3 +34,8 @@ const Book = () => {
 };
 
 export default Book;
+
+// export const getServerSideProps = async (context) => {
+//   const res = await fetch("https://localhost:3000/pages/api/getDetail");
+//   const
+// };
