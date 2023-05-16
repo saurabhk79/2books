@@ -1,12 +1,14 @@
-export default function getBook(req, res) {
+export default async function getBook(req, res) {
   const key = process.env.REACT_APP_GOOGLE_BOOK_API;
-
   const id = req.query.id;
+
   try {
-    fetch(`https://www.googleapis.com/books/v1/volumes/${id}?key=${key}`)
-      .then((response) => response.json())
-      .then((data) => res.status(200).json(data));
+    const response = await fetch(
+      `https://www.googleapis.com/books/v1/volumes/${id}?key=${key}`
+    );
+    const data = await response.json();
+    res.status(200).json(data);
   } catch (err) {
-    res.status(500).json({ error: "encountered error" });
+    res.status(500).json({ error: "Encountered an error" });
   }
 }

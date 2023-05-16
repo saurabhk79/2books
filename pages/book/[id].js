@@ -1,7 +1,8 @@
 import React from "react";
 import styles from "../../styles/Book.module.css";
 
-const Book = () => {
+const Book = ({ data }) => {
+  console.log(data);
   return (
     <div>
       <main className={styles.main}>
@@ -35,7 +36,15 @@ const Book = () => {
 
 export default Book;
 
-// export const getServerSideProps = async (context) => {
-//   const res = await fetch("https://localhost:3000/pages/api/getDetail");
-//   const
-// };
+export const getServerSideProps = async (context) => {
+  const res = await fetch(
+    `http://localhost:3000/pages/api/getDetail?id=${context.params.id}`
+  );
+  const data = await res.json();
+
+  return {
+    props: {
+      data,
+    },
+  };
+};
