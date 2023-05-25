@@ -1,25 +1,13 @@
-.bgimg {
-  background: url("../public/2books.jpg");
-  width: 100vw;
-  height: 100vh;
-  background-position: center;
-  background-size: cover;
-  position: absolute;
-  z-index: -1;
-  filter: brightness(50%);
-}
-
-.main {
-  height: 100vh;
+.box {
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-direction: column;
+  justify-content: space-between;
 }
 
 .title {
-  color: white;
+  color: black;
   font-size: 6rem;
+  font-weight: 900;
 }
 
 .title > span {
@@ -27,22 +15,26 @@
 }
 
 .subtitle {
-  color: white;
   font-size: xx-large;
   margin-bottom: 3rem;
 }
 
-.btns > button {
+.btns > a {
   padding: 0.5rem 2rem;
+  margin-right: 1rem;
   border: none;
   outline: none;
   font-size: larger;
   font-weight: 900;
-  margin: 0rem 1rem;
+  background-color: #ebebeb;
 }
 
-.btns > button:hover {
+.btns > a:hover {
   background: #f4a261;
   color: white;
   transition: all 0.2s;
+}
+
+.gTag {
+  font-size: 2rem;
 }

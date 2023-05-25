@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
 import { PulseLoader } from "react-spinners";
 
 import styles from "../styles/List.module.css";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const List = () => {
   const [search, setSearch] = useState("");
@@ -35,14 +36,35 @@ const List = () => {
 
     setLoading(false);
   };
+
+  // This is for the items to animate for the framer motion
+  // const container = {
+  //   hidden: { opacity: 1, scale: 0 },
+  //   visible: {
+  //     opacity: 1,
+  //     scale: 1,
+  //     transition: {
+  //       delayChildren: 0.3,
+  //       staggerChildren: 0.2,
+  //     },
+  //   },
+  // };
+
+  // const item = {
+  //   hidden: { y: 20, opacity: 0 },
+  //   visible: {
+  //     y: 0,
+  //     opacity: 1,
+  //   },
+  // };
+
   return (
     <div>
       <Head>
         <title>2Book</title>
       </Head>
 
-      <main className={styles.main}>
-        {/* Search bar here */}
+      <main>
         <h1>Search</h1>
         <input
           type="text"
@@ -52,7 +74,6 @@ const List = () => {
           onChange={(e) => handleBookChange(e)}
         />
 
-        {/* Books here */}
         <div className={styles.books}>
           <div className={styles.bookHeader}>
             <h1>Books</h1>
@@ -74,7 +95,11 @@ const List = () => {
             <div className={styles.bookgrid}>
               {books.length > 0
                 ? books.map((bk, i) => {
-                    return <BookCard key={i} bk={bk} />;
+                    return (
+                      // <motion.div animate={item} >
+                      <BookCard bk={bk} key={i} />
+                      // </motion.div>
+                    );
                   })
                 : null}
             </div>
@@ -105,14 +130,10 @@ const BookCard = ({ bk }) => {
         <div className={styles.noImage}>No Image Available</div>
       )}
       <div className={styles.details}>
-        <h4>{book.title}</h4>
-        {/* <p>{book.subtitle}</p> */}
+        <h3>{book.title}</h3>
       </div>
     </Link>
   );
 };
-
-// export const getStaticProps = async () => {
-// }
 
 export default List;

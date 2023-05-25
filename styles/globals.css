@@ -22,6 +22,7 @@ button {
   font-weight: 900;
   margin: 1rem;
   cursor: pointer;
+  background-color: #ebebeb;
 
   transition: all 0.2s ease-in-out;
 }
@@ -37,13 +38,13 @@ button:hover {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #f4a261;
+  background-color: #d8d8d8;
   border-radius: 1rem;
 }
 
 ::-webkit-scrollbar {
-  background-color: #d8d8d8;
-  width: 0.5rem;
+  background-color: #ebebeb;
+  width: 0.8rem;
 }
 
 /* Navbar here */
@@ -76,4 +77,84 @@ button:hover {
 
 .navBtn {
   font-weight: normal;
+}
+
+.side-nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: white;
+
+  width: 15rem;
+  height: 100vh;
+  padding: 1rem;
+  border-left: 1px solid #cbcbcb;
+  transition: all 0.2s ease-in-out;
+}
+
+.side-nav-hidden {
+  right: -100vw;
+  transition: all 0.5s ease-in-out;
+}
+
+.close-nav {
+  text-align: right;
+  font-size: 1.5rem;
+  font-weight: 900;
+}
+
+.close-nav > span {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.close-nav > span:hover {
+  background-color: #f4a261;
+}
+
+.nav-option > a {
+  padding: 0.5rem;
+  text-align: center;
+  display: block;
+  margin: 0.5rem;
+  font-size: large;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.nav-option > a:hover {
+  background-color: #f4a261;
+}
+
+/* ===================== */
+/* ===================== */
+
+.main {
+  max-width: 880px;
+  margin: auto;
+  margin-top: 5rem;
+  padding-top: 1.5rem;
+}
+
+/* ===================== */
+/* For tablet devices */
+/* ===================== */
+
+@media (max-width: 720px) {
+  .main {
+    max-width: 540px;
+    margin: auto;
+  }
+}
+
+/* ===================== */
+/* For mobile devices */
+/* ===================== */
+
+@media (max-width: 540px) {
+  .main {
+    max-width: 360px;
+    margin: auto;
+  }
 }
